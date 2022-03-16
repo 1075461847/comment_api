@@ -1,12 +1,17 @@
 class FatherCommentsController < ApplicationController
-  def with_user
-    @comments = {}
-    @comments[:father_comments] = User.find(params[:user_id]).father_comments.order(publish_data: :desc)
+  def create
+    @father_comment = FatherComment.new(father_comment_params)
+    if @father_comment.valid?
+      @father_comment.save
+    else
+      render json: { meta: { code: 422, error_message: @father_comment.errors.messages } },
+             status: 422
+    end
   end
 
   def destroy
     @father_comment = FatherComment.find(params[:id])
-    if Time.now - @father_comment.publish_data < 86_400
+    if Time.now - @father_comment.publish_at < 24 * 60 * 60
       @father_comment.destroy
     else
       render json: { meta: { code: 422, error_message: '只可删除当天评论' } },
@@ -14,13 +19,9 @@ class FatherCommentsController < ApplicationController
     end
   end
 
-  def need_verify
-    @comments = {}
-    @comments[:father_comments] = FatherComment.not_verify
-  end
+  private
 
-  def with_article
-    @comments = {}
-    @comments[:father_comments] = FatherComment.with_article params[:article_id]
+  def father_comment_params
+    params.require(:father_comment).permit(:article_id, :content, :user_id, :confirm, :publish_at)
   end
 end
