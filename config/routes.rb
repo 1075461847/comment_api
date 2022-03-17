@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :articles, only: [] do
-    get 'comments'
-    resources :father_comments, only: [:create]
-    resources :son_comments, only: [:create]
+    get 'father_comments'
+    post 'father_comments', to: 'articles#create_father_comment'
+    resources :father_comments, only: [] do
+      post 'son_comments', to: 'articles#create_son_comment'
+      get 'son_comments', to: 'articles#son_comments'
+      get 'all_son_comments', to: 'articles#all_son_comments'
+    end
   end
 end

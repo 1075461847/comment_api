@@ -7,4 +7,5 @@ class SonComment < ApplicationRecord
   validates :confirm, presence: true, inclusion: { in: %w[need_confirm confirmed unconfirmed] }
   belongs_to :user
   belongs_to :article
+  belongs_to :father_comment
 end

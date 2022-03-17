@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 
   def comments
     @comments = {}
-    User.find(params[:user_id]).father_comment
+    @comments[:father_comments] = @user.father_comments.confirmed.order(publish_at: :desc)
+    @comments[:son_comments] = @user.son_comments.confirmed.order(publish_at: :desc)
   end
 
   private
