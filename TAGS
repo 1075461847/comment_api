@@ -1,0 +1,168 @@
+
+app/mailers/application_mailer.rb,67
+class ApplicationMailer < ActionMailer::BaseApplicationMailer1,0
+
+app/models/father_comment.rb,677
+class FatherComment < ApplicationRecordFatherComment1,0
+  has_many :son_comments, dependent: :destroyson_comments8,0
+  has_many :son_comments, dependent: :destroyson_comments=8,0
+  has_many :son_comments, dependent: :destroyson_comment_ids8,0
+  has_many :son_comments, dependent: :destroyson_comment_ids=8,0
+  belongs_to :useruser9,0
+  belongs_to :useruser=9,0
+  belongs_to :userbuild_user9,0
+  belongs_to :usercreate_user9,0
+  belongs_to :usercreate_user!9,0
+  belongs_to :articlearticle10,0
+  belongs_to :articlearticle=10,0
+  belongs_to :articlebuild_article10,0
+  belongs_to :articlecreate_article10,0
+  belongs_to :articlecreate_article!10,0
+
+app/models/article.rb,854
+class Article < ApplicationRecordArticle1,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comments2,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comments=2,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comment_ids2,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comment_ids=2,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comments3,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comments=3,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comment_ids3,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comment_ids=3,0
+
+app/models/son_comment.rb,673
+class SonComment < ApplicationRecordSonComment1,0
+  belongs_to :useruser8,0
+  belongs_to :useruser=8,0
+  belongs_to :userbuild_user8,0
+  belongs_to :usercreate_user8,0
+  belongs_to :usercreate_user!8,0
+  belongs_to :articlearticle9,0
+  belongs_to :articlearticle=9,0
+  belongs_to :articlebuild_article9,0
+  belongs_to :articlecreate_article9,0
+  belongs_to :articlecreate_article!9,0
+  belongs_to :father_commentfather_comment10,0
+  belongs_to :father_commentfather_comment=10,0
+  belongs_to :father_commentbuild_father_comment10,0
+  belongs_to :father_commentcreate_father_comment10,0
+  belongs_to :father_commentcreate_father_comment!10,0
+
+app/models/application_record.rb,67
+class ApplicationRecord < ActiveRecord::BaseApplicationRecord1,0
+
+app/models/user_like.rb,472
+class UserLike < ApplicationRecordUserLike1,0
+  belongs_to :useruser2,0
+  belongs_to :useruser=2,0
+  belongs_to :userbuild_user2,0
+  belongs_to :usercreate_user2,0
+  belongs_to :usercreate_user!2,0
+  belongs_to :father_commentfather_comment3,0
+  belongs_to :father_commentfather_comment=3,0
+  belongs_to :father_commentbuild_father_comment3,0
+  belongs_to :father_commentcreate_father_comment3,0
+  belongs_to :father_commentcreate_father_comment!3,0
+
+app/models/user.rb,848
+class User < ApplicationRecordUser1,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comments3,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comments=3,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comment_ids3,0
+  has_many :father_comments, -> { order('publish_at DESC') }, dependent: :destroyfather_comment_ids=3,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comments4,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comments=4,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comment_ids4,0
+  has_many :son_comments, -> { order('publish_at DESC') }, dependent: :destroyson_comment_ids=4,0
+
+app/jobs/application_job.rb,58
+class ApplicationJob < ActiveJob::BaseApplicationJob1,0
+
+app/controllers/application_controller.rb,78
+class ApplicationController < ActionController::APIApplicationController1,0
+
+app/controllers/comments/son_comments_controller.rb,178
+class SonCommentsController < ApplicationControllerSonCommentsController1,0
+  def createcreate2,0
+  def destroydestroy12,0
+  def son_comment_paramsson_comment_params24,0
+
+app/controllers/comments/father_comments_controller.rb,190
+class FatherCommentsController < ApplicationControllerFatherCommentsController1,0
+  def createcreate2,0
+  def destroydestroy12,0
+  def father_comment_paramsfather_comment_params24,0
+
+app/controllers/articles_controller.rb,488
+class ArticlesController < ApplicationControllerArticlesController1,0
+  def father_commentsfather_comments5,0
+  def create_father_commentcreate_father_comment10,0
+  def son_commentsson_comments20,0
+  def all_son_commentsall_son_comments25,0
+  def create_son_commentcreate_son_comment29,0
+  def set_articleset_article41,0
+  def set_father_commentset_father_comment45,0
+  def father_comment_paramsfather_comment_params49,0
+  def son_comment_paramsson_comment_params53,0
+
+app/controllers/users_controller.rb,318
+class UsersController < ApplicationControllerUsersController1,0
+  def createcreate3,0
+  def destroydestroy13,0
+  def commentscomments17,0
+  def destroy_father_commentdestroy_father_comment23,0
+  def destroy_son_commentdestroy_son_comment27,0
+  def set_userset_user33,0
+  def user_paramsuser_params38,0
+
+app/controllers/user_likes_controller.rb,74
+class UserLikesController < ApplicationControllerUserLikesController1,0
+
+app/channels/application_cable/connection.rb,195
+module ApplicationCableApplicationCable1,0
+  class Connection < ActionCable::Connection::BaseConnection2,0
+  class Connection < ActionCable::Connection::BaseApplicationCable::Connection2,0
+
+app/channels/application_cable/channel.rb,177
+module ApplicationCableApplicationCable1,0
+  class Channel < ActionCable::Channel::BaseChannel2,0
+  class Channel < ActionCable::Channel::BaseApplicationCable::Channel2,0
+
+test/models/article_test.rb,60
+class ArticleTest < ActiveSupport::TestCaseArticleTest3,0
+
+test/models/father_comment_test.rb,72
+class FatherCommentTest < ActiveSupport::TestCaseFatherCommentTest3,0
+
+test/models/son_comment_test.rb,66
+class SonCommentTest < ActiveSupport::TestCaseSonCommentTest3,0
+
+test/models/user_like_test.rb,62
+class UserLikeTest < ActiveSupport::TestCaseUserLikeTest3,0
+
+test/models/user_test.rb,54
+class UserTest < ActiveSupport::TestCaseUserTest3,0
+
+test/test_helper.rb,101
+class ActiveSupport::TestCaseTestCase5,0
+class ActiveSupport::TestCaseActiveSupport::TestCase5,0
+
+test/controllers/user_likes_controller_test.rb,92
+class UserLikesControllerTest < ActionDispatch::IntegrationTestUserLikesControllerTest3,0
+
+test/controllers/users_controller_test.rb,84
+class UsersControllerTest < ActionDispatch::IntegrationTestUsersControllerTest3,0
+
+test/controllers/son_comments_controller_test.rb,96
+class SonCommentsControllerTest < ActionDispatch::IntegrationTestSonCommentsControllerTest3,0
+
+test/controllers/father_comments_controller_test.rb,102
+class FatherCommentsControllerTest < ActionDispatch::IntegrationTestFatherCommentsControllerTest3,0
+
+test/controllers/articles_controller_test.rb,90
+class ArticlesControllerTest < ActionDispatch::IntegrationTestArticlesControllerTest3,0
+
+config/application.rb,162
+module CommentApiCommentApi20,0
+  class Application < Rails::ApplicationApplication21,0
+  class Application < Rails::ApplicationCommentApi::Application21,0

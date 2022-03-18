@@ -6,6 +6,7 @@ class FatherComment < ApplicationRecord
   validates :publish_at, presence: true
   validates :confirm, presence: true, inclusion: { in: %w[need_confirm confirmed unconfirmed] }
   has_many :son_comments, dependent: :destroy
+  has_many :user_likes, dependent: :destroy
   belongs_to :user
   belongs_to :article
 end

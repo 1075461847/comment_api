@@ -1,7 +1,7 @@
 json.comments do
   json.father_comments do
     json.array! @comments[:father_comments] do |father_comment|
-      json.call(father_comment, :id, :article_id, :content, :user_id, :confirm, :publish_at)
+      json.call(father_comment, :id, :article_id, :content, :user_id, :confirm, :publish_at, :like_count)
     end
   end
   json.son_comments do

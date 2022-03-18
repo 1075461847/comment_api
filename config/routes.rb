@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get '/confirm/comments', to: 'father_comments#need_confirm'
+  post 'userlikes/like', to: 'user_likes#like'
+  get  'userlikes/like', to: 'user_likes#like?'
 
   resources :users, only: %i[create destroy] do
     get 'comments'
