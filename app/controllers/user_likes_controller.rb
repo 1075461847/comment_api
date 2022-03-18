@@ -3,7 +3,7 @@ class UserLikesController < ApplicationController
   def like
     @user_like = UserLike.find_by(like_params)
     if @user_like.nil?
-      UserLike.create(like_params)
+      @user_like = UserLike.create(like_params)
       @father_comment.like_count += 1
     else
       @user_like.destroy
