@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def father_comments
     @count = @article.father_comments.confirmed.count + @article.son_comments.confirmed.count
-    @father_comments = @article.father_comments.confirmed.order(publish_at: :desc)
+    @father_comments = @article.father_comments.confirmed
   end
 
   def create_father_comment
@@ -19,11 +19,11 @@ class ArticlesController < ApplicationController
 
   def son_comments
     @count = @father_comment.son_comments.confirmed.count
-    @son_comments = @father_comment.son_comments.confirmed.order(publish_at: :desc)[0, 3]
+    @son_comments = @father_comment.son_comments.confirmed[0, 3]
   end
 
   def all_son_comments
-    @son_comments = @father_comment.son_comments.confirmed.order(publish_at: :desc)
+    @son_comments = @father_comment.son_comments.confirmed
   end
 
   def create_son_comment

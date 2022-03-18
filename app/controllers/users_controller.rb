@@ -16,8 +16,8 @@ class UsersController < ApplicationController
 
   def comments
     @comments = {}
-    @comments[:father_comments] = @user.father_comments.confirmed.order(publish_at: :desc)
-    @comments[:son_comments] = @user.son_comments.confirmed.order(publish_at: :desc)
+    @comments[:father_comments] = @user.father_comments.confirmed
+    @comments[:son_comments] = @user.son_comments.confirmed
   end
 
   def destroy_father_comment
