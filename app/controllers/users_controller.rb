@@ -20,6 +20,14 @@ class UsersController < ApplicationController
     @comments[:son_comments] = @user.son_comments.confirmed.order(publish_at: :desc)
   end
 
+  def destroy_father_comment
+    @father_comment = FatherComment.find_by_id(params[:father_comment_id]).destroy
+  end
+
+  def destroy_son_comment
+    @son_comment = SonComment.find_by_id(params[:son_comment_id]).destroy
+  end
+
   private
 
   def set_user

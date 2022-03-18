@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[create destroy] do
     get 'comments'
-    resources :father_comments, only: [:destroy]
-    resources :son_comments, only: [:destroy]
+    delete 'father_comments/:father_comment_id', to: 'users#destroy_father_comment'
+    delete 'son_comments/:son_comment_id', to: 'users#destroy_son_comment'
   end
 
   resources :articles, only: [] do

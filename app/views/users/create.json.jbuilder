@@ -1,3 +1,1 @@
-json.user do
-  json.call(@user, :id, :name)
-end
+json.user @user, :id, :name
