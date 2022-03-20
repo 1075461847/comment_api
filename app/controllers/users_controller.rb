@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[destroy comments]
+  before_action :set_user, only: %i[destroy show]
   def create
     @user = User.new(user_params)
     if @user.valid?
@@ -14,25 +14,16 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  def comments
+  def show
     @comments = {}
     @comments[:father_comments] = @user.father_comments.confirmed
     @comments[:son_comments] = @user.son_comments.confirmed
   end
 
-  def destroy_father_comment
-    @father_comment = FatherComment.find_by_id(params[:father_comment_id]).destroy
-  end
-
-  def destroy_son_comment
-    @son_comment = SonComment.find_by_id(params[:son_comment_id]).destroy
-  end
-
   private
 
   def set_user
-    @user = User.find_by_id params[:user_id].to_i
-    @user ||= {}
+    @user = User.find_by_id params[:id]
   end
 
   def user_params

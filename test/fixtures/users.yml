@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {name: lichun}
-# column: value
-#
-two: {name: chenyajin}
-# column: value
+1: { id: 1, name: lichun }
+
+2: { id: 2, name: chenyajin }
+
+3: { id: 3, name: zhangsan }
+
+4: { id: 4, name: lisi }
+
+5: { id: 5, name: wangwu }
+
+6: { id: 6, name: zhaoliu }
+
+7: { id: 7, name: qianqi }

@@ -3,28 +3,25 @@ class UserLikesController < ApplicationController
   def like
     @user_like = UserLike.find_by(like_params)
     if @user_like.nil?
-      @user_like = UserLike.create(like_params)
-      @father_comment.like_count += 1
+      @user_like = @father_comment.user_likes.create(like_params)
     else
       @user_like.destroy
-      @father_comment.like_count -= 1
     end
-    @father_comment.save
   end
 
-  def like?
-    @user_like = UserLike.find_by(like_params)
+  def status
+    @user_like = @father_comment.user_likesrLike.find_by(like_params)
     if @user_like.nil?
-      render json: { is_like: false }
+      render json: { status: false }
     else
-      render json: { is_like: true }
+      render json: { status: true }
     end
   end
 
   private
 
   def like_params
-    params.permit(:user_id, :father_comment_id)
+    params.permit(:user_id)
   end
 
   def set_father_comment

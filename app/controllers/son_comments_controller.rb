@@ -1,6 +1,11 @@
 class SonCommentsController < ApplicationController
+  before_action :set_father_comment
+  def index
+    @soncomments = @father_comment.son_comments
+  end
+
   def create
-    @son_comment = SonComment.new(son_comment_params)
+    @son_comment = @father_comment.son_comments.new(son_comment_params)
     if @son_comment.valid?
       @son_comment.save
     else
@@ -21,8 +26,11 @@ class SonCommentsController < ApplicationController
 
   private
 
+  def set_father_comment
+    @father_comment = FatherComment.find_by_id(params[:father_comment_id])
+  end
+
   def son_comment_params
-    params.require(:son_comment).permit(:article_id, :content, :father_comment_id, :user_id, :confirm, :publish_at,
-                                        :reply_user_id)
+    params.require(:son_comment).permit(:content, :user_id, :confirm, :publish_at, :reply_user_id)
   end
 end

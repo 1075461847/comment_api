@@ -1,6 +1,7 @@
 class FatherCommentsController < ApplicationController
+  before_action :set_article
   def create
-    @father_comment = FatherComment.new(father_comment_params)
+    @father_comment = @article.father_comments.new(father_comment_params)
     if @father_comment.valid?
       @father_comment.save
     else
@@ -21,7 +22,11 @@ class FatherCommentsController < ApplicationController
 
   private
 
+  def set_article
+    @article = Article.find_by_id(params[:article_id])
+  end
+
   def father_comment_params
-    params.require(:father_comment).permit(:article_id, :content, :user_id, :confirm, :publish_at)
+    params.require(:father_comment).permit(:content, :user_id, :confirm, :publish_at)
   end
 end
